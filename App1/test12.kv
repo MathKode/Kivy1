@@ -1,0 +1,32 @@
+
+<CustomOneLineIconListItem>:
+    IconLeftWidget:
+        icon: root.icon
+
+
+<PreviousMDIcons>:
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        padding: 20
+
+        MDBoxLayout:
+            adaptive_height: True
+            
+            MDIconButton:
+                icon: "magnify"
+            
+            MDTextField:
+                id: search_field
+                hint_text: 'Search Icon'
+                on_text: root.set_list_md_icons(self.text, True)
+
+        ScrollView:
+            
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                row_default_height: 60
+                height: 1000
+                id: gl
+                

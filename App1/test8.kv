@@ -1,0 +1,23 @@
+
+
+<FirstWindow>:
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        padding: 50
+        spacing: 20
+
+        Label:
+            id: my_label
+            text: "Hello World"
+            font_size: 40
+        Button:
+            text: "Press Me!"
+            font_size: 35
+            size_hint: .5, .5
+            pos_hint: {"center_x": .5}
+            id: button_
+            on_release : root.animate_it(self)
+            
+        

@@ -1,0 +1,15 @@
+#:kivy!
+<HomePage>:
+    GridLayout:
+        cols: 1
+        Label:
+            id: greeting
+            text:"Bonjour, comment t'appeles tu ?"
+        TextInput:
+            id: entry
+        Button:
+            text: "Valider"
+            on_press: root.modify()
+
+
+

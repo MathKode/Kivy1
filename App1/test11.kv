@@ -1,0 +1,35 @@
+
+<CustomOneLineIconListItem>:
+    IconLeftWidget:
+        icon: root.icon
+
+
+<PreviousMDIcons>:
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        padding: 20
+
+        MDBoxLayout:
+            adaptive_height: True
+            
+            MDIconButton:
+                icon: "magnify"
+            
+            MDTextField:
+                id: search_field
+                hint_text: 'Search Icon'
+                on_text: root.set_list_md_icons(self.text, True)
+            
+        RecycleView:
+            id: rv
+            key_viewclass: "viewclass"
+            key_size: "height"
+
+            RecycleBoxLayout:
+                padding: 10
+                default_size: None, 48
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: "vertical"
