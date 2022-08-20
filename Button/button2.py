@@ -1,6 +1,6 @@
 from kivy.lang.builder import Builder
 from kivy.uix.button import Button
-from kivy.app import App
+from kivymd.app import MDApp
 
 # Size Text
 """
@@ -64,6 +64,8 @@ height: <nb>
     -> Hauteur du Widget
     // size_hint_y: None
        height: 100
+size: <width>, <height>
+    -> Regroupe width et height
 x: <nb>
     -> Position x de l'objet (par rapport au bord gauche)
 y: <nb>
@@ -79,6 +81,33 @@ pos_hint: {"x": <nb%>, "y": <nb%>, "center_x": <nb%>, "center_y": <nb%>, "right"
         center_y : BAS -> CENTRE WIDGET
 """
 
+# Button Style
+"""
+background_color: (<r>,<g>,<b>,<a>)
+    -> Couleur de font au format rgb - Alpha
+       Cela agit comme multiplicateur de la texture, or comme la texture de base est grise, la couleur obtenu sera plus foncé. Pour éviter cela, il faut mettre la texture du boutton sur ''
+    // background_normal: ''
+    // background_color: 1, 0, 0
+background_normal: <PATH>
+    -> Texture Image de fond utilisé lorsque le boutton n'est pas enfoncé
+    // background_normal: 'p1.png'
+background_down: <PATH>
+    -> Texture Image de fond utilisée lorsque le bouton est pressé
+    // background_down: "p1.png"
+
+"""
+
+# MDIconButton
+"""
+icon: "<name>"
+    -> Nom de l'icone
+icon_size: <nb>
+    -> Taille de l'icone
+theme_icon_color: (“Primary”, “Secondary”, “Hint”, “Error”, “Custom”, “ContrastParentBackground”)
+    -> Theme de l'icon
+icon_color: (<r>,<g>,<b>,<a>)
+"""
+
 # Argument
 """
 root.width
@@ -89,26 +118,34 @@ self.top
     |- self.height + self.y (auteur totale depuis le bottom)
 self.right
     |- self.width + self.x (largeur totale depuis le cote droit)
-
+self.center
+    |- [self.height/2 + self.y, self.width/2 + self.x]
 """
 kv = '''
-Button:
-    text: f"Press Me {self.texture_size} {self.top} {self.size} eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
-    id: bt
-    text_size: root.width, None
-    size: self.texture_size
-    valign:"center"
-    halign:"justify"
-    line_height: 1
-    padding: 40, 10
-    size_hint_x: 0.7
-    x:10
-    y:10
-    pos_hint:{"center_y": 0.7}
+FloatLayout:
+    Button:
+        text: f"Press Me {self.center} {self.top} {self.size} eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        id: bt
+        text_size: root.width, None
+        size: self.texture_size
+        valign:"center"
+        halign:"justify"
+        line_height: 1
+        padding: 40, 10
+        size_hint_x: 0.7
+        x:10
+        y:10
+        background_down_color: 1,0,0
+    MDIconButton:
+        pos_hint: {"x": 0.9, "center_y": 0.5}
+        icon: "send-clock"
+        icon_size: 64
+        theme_icon_color: "ContrastParentBackground"
+        icon_color: (1,0,0)
 '''
 
 
-class MyApp(App):
+class MyApp(MDApp):
     def build(self):
         return Builder.load_string(kv)
     
