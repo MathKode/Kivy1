@@ -50,6 +50,7 @@ and sdkmanager
 
 Go here : https://developer.android.com/studio#downloads
 
-Select linux download file, accept the terms, and copy the link of download button (replace bellow)
+Select linux command line sdk download file, accept the terms, and copy the link of download button (replace bellow)
 ```
-cd ~ && wget https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.2.1.16/android-studio-2021.2.1.16-linux.tar.gz && PATH=~/tools:~/tools/bin:$PATH
+cd ~ && url="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip" && filename=$(basename "$url") && wget $url && unzip $filename && export PATH=~/cmdline-tools:~/cmdline-tools/bin:$PATH
+```
