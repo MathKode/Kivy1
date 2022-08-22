@@ -54,3 +54,12 @@ Select linux command line sdk download file, accept the terms, and copy the link
 ```
 cd ~ && url="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip" && filename=$(basename "$url") && wget $url && unzip $filename && export PATH=~/cmdline-tools:~/cmdline-tools/bin:$PATH
 ```
+And that's it
+
+Just run :
+```
+python3 -m buildozer init
+```
+```
+python3 -m buildozer -v android debug
+```
